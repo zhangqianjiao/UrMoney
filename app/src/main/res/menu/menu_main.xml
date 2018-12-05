@@ -3,8 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.pipid.urmoney.MainActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_CurrencyConverter"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="CurrencyConverter"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_Clearpage"
+        android:icon="@drawable/ic_clearicon"
+        android:title="Clearpage"
+        app:showAsAction="ifRoom" />
+
 </menu>

@@ -40,10 +40,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return database.query(ROBOT_COST,null,null,null,null,null,"" + COST_DATE+" ASC");
     }
 
-    public void deleteAllDate(){
-        SQLiteDatabase database = getWritableDatabase();
-        database.delete(ROBOT_COST,null,null);
-    }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 

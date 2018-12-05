@@ -12,9 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -32,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         mDatabaseHelper = new DatabaseHelper(this);
         mCostBeanList = new ArrayList<>();
         ListView costList = (ListView) findViewById(R.id.lv_main);
@@ -72,14 +73,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initCostData() {
-//        mDatabaseHelper.deleteAllDate();
-//        for (int i = 0; i < 6; i++) {
-//            CostBean costBean = new CostBean();
-//            costBean.costTitle = i + "mock";
-//            costBean.costDate = "11-11";
-//            costBean.costMoney = "20";
-//            mDatabaseHelper.insertCost(costBean);
-//        }
         Cursor cursor = mDatabaseHelper.getAllCostDate();
         if(cursor != null){
             while (cursor.moveToNext()){
@@ -98,4 +91,19 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_Clearpage:
+                Toast.makeText(this, "Clear latest record", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_CurrencyConverter:
+                Intent intent = new Intent(MainActivity.this, CurrentActivity.class);
+                startActivity(intent);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }
