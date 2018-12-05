@@ -8,9 +8,15 @@
         android:title="CurrencyConverter"
         app:showAsAction="never" />
     <item
+        android:id="@+id/action_ClearLatest"
+        android:icon="@drawable/ic_clearicon"
+        android:title="ClearLatest"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/action_Clearpage"
         android:icon="@drawable/ic_clearicon"
         android:title="Clearpage"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
+
 
 </menu>

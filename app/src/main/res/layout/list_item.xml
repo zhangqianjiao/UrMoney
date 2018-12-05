@@ -13,7 +13,9 @@
         android:singleLine="true"
         android:textSize="35sp"
         android:ellipsize="marquee"
-        android:text="costTitle"/>
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:text="costTitle_____"/>
 
     <TextView
         android:id="@+id/tv_date"

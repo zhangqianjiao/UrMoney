@@ -2,7 +2,7 @@ package com.example.pipid.urmoney;
 
 import java.io.Serializable;
 
-public class CostBean implements Serializable {
+public class CostItem implements Serializable {
     public String costTitle;
     public String costDate;
     public String costMoney;
@@ -33,7 +33,7 @@ public class CostBean implements Serializable {
 
     @Override
     public String toString() {
-        return "CostBean{" +
+        return "CostItem{" +
                 "costTitle='" + costTitle + '\'' +
                 ", costDate='" + costDate + '\'' +
                 ", costMoney='" + costMoney + '\'' +

@@ -5,4 +5,10 @@
 
     <string name="convert">Convert</string>
 
+    <string-array name= "currency">
+        <item>USD</item>
+        <item>EUR</item>
+        <item>CNY</item>
+
+</string-array>>
 </resources>

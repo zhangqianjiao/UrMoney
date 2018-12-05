@@ -24,7 +24,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<CostBean> mCostBeanList;
+    private List<CostItem> mCostItemList;
     private DatabaseHelper mDatabaseHelper;
     private CostListAdapter mAdapter;
 
@@ -32,13 +32,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mDatabaseHelper = new DatabaseHelper(this);
-        mCostBeanList = new ArrayList<>();
+        mCostItemList = new ArrayList<>();
         ListView costList = (ListView) findViewById(R.id.lv_main);
         initCostData();
-        mAdapter = new CostListAdapter(this,mCostBeanList);
+        mAdapter = new CostListAdapter(this,mCostItemList);
         costList.setAdapter(mAdapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -56,13 +57,13 @@ public class MainActivity extends AppCompatActivity {
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        CostBean costBean = new CostBean();
-                        costBean.costTitle = title.getText().toString();
-                        costBean.costMoney = money.getText().toString();
-                        costBean.costDate = date.getYear() + "-" + (date.getMonth() + 1)+"-" +
+                        CostItem costItem = new CostItem();
+                        costItem.costTitle = title.getText().toString();
+                        costItem.costMoney = money.getText().toString();
+                        costItem.costDate = date.getYear() + "-" + (date.getMonth() + 1)+"-" +
                                 date.getDayOfMonth();
-                        mDatabaseHelper.insertCost(costBean);
-                        mCostBeanList.add(costBean);
+                        mDatabaseHelper.insertCost(costItem);
+                        mCostItemList.add(costItem);
                         mAdapter.notifyDataSetChanged();
                     }
                 });
@@ -76,11 +77,11 @@ public class MainActivity extends AppCompatActivity {
         Cursor cursor = mDatabaseHelper.getAllCostDate();
         if(cursor != null){
             while (cursor.moveToNext()){
-                CostBean costBean = new CostBean();
-                costBean.costTitle = cursor.getString(cursor.getColumnIndex("cost_title"));
-                costBean.costDate = cursor.getString(cursor.getColumnIndex("cost_date"));
-                costBean.costMoney = cursor.getString(cursor.getColumnIndex("cost_money"));
-                mCostBeanList.add(costBean);
+                CostItem costItem = new CostItem();
+                costItem.costTitle = cursor.getString(cursor.getColumnIndex("cost_title"));
+                costItem.costDate = cursor.getString(cursor.getColumnIndex("cost_date"));
+                costItem.costMoney = cursor.getString(cursor.getColumnIndex("cost_money"));
+                mCostItemList.add(costItem);
             }
             cursor.close();
         }
@@ -95,13 +96,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_Clearpage:
+            case R.id.action_ClearLatest:
+                mCostItemList.remove(mCostItemList.size() - 1);
                 Toast.makeText(this, "Clear latest record", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.action_CurrencyConverter:
                 Intent intent = new Intent(MainActivity.this, CurrentActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.action_Clearpage:
+                mDatabaseHelper.removeAllCost();
+                Toast.makeText(this, "Clear All Record", Toast.LENGTH_SHORT).show();
+                return true;
+
         }
         return super.onOptionsItemSelected(item);
     }
