@@ -15,7 +15,9 @@
         android:ellipsize="marquee"
         android:marqueeRepeatLimit="marquee_forever"
         android:scrollHorizontally="true"
-        android:text="costTitle_____"/>
+        android:text="costTitle_____"
+        android:fontFamily="monospace"
+        />
 
     <TextView
         android:id="@+id/tv_date"
@@ -25,7 +27,9 @@
         android:layout_toRightOf="@id/tv_title"
         android:gravity="center"
         android:textSize="20sp"
-        android:text="costDate"/>
+        android:text="costDate"
+        android:fontFamily="monospace"
+        />
 
     <TextView
         android:id="@+id/tv_cost"
@@ -35,7 +39,9 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="20dp"
         android:textSize="30sp"
-        android:text="30" />
+        android:text="30"
+        android:fontFamily="monospace"
+        />
 
 
 </RelativeLayout>

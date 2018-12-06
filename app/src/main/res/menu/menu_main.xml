@@ -4,7 +4,7 @@
     tools:context="com.example.pipid.urmoney.MainActivity">
     <item
         android:id="@+id/action_CurrencyConverter"
-        android:orderInCategory="100"
+        android:orderInCategory="200"
         android:title="CurrencyConverter"
         app:showAsAction="never" />
     <item
@@ -14,9 +14,35 @@
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_Clearpage"
-        android:icon="@drawable/ic_clearicon"
+        android:orderInCategory="300"
         android:title="Clearpage"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_Theme"
+        android:orderInCategory="100"
+        android:title="Theme"
+        app:showAsAction="never">
+    <menu>
+        <item android:id="@+id/red"
+            android:title="Red" />
+        <item android:id="@+id/yellow"
+            android:title="Yellow" />
+        <item android:id="@+id/blue"
+            android:title="Blue" />
+        <item android:id="@+id/black"
+            android:title="Black" />
+        <item android:id="@+id/green"
+            android:title="Green" />
+        <item android:id="@+id/pink"
+            android:title="Pink" />
+        <item android:id="@+id/original"
+            android:title="Original" />
+
+    </menu>
+
+
+    </item>
+
 
 
 </menu>

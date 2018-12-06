@@ -3,6 +3,7 @@ package com.example.pipid.urmoney;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_ClearLatest:
-                mCostItemList.remove(mCostItemList.size() - 1);
+                //mCostItemList.remove(mCostItemList.size() - 1);
                 Toast.makeText(this, "Clear latest record", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.action_CurrencyConverter:
@@ -108,7 +109,34 @@ public class MainActivity extends AppCompatActivity {
                 mDatabaseHelper.removeAllCost();
                 Toast.makeText(this, "Clear All Record", Toast.LENGTH_SHORT).show();
                 return true;
-
+            case R.id.red:
+                getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorRed)));
+                Toast.makeText(this, "Red Theme", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.yellow:
+                getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorYellow)));
+                Toast.makeText(this, "Yellow Theme", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.blue:
+                getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorBlue)));
+                Toast.makeText(this, "Blue Theme", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.black:
+                getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorBlack)));
+                Toast.makeText(this, "Black Theme", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.green:
+                getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorGreen)));
+                Toast.makeText(this, "Green Theme", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.original:
+                getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
+                Toast.makeText(this, "Back to Original", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.pink:
+                getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPink)));
+                Toast.makeText(this, "Pink Theme", Toast.LENGTH_SHORT).show();
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
